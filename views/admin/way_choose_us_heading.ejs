@@ -1,0 +1,27 @@
+<%- include('navbar.ejs')  %>
+
+<form action="/admin/update_way_choose_us_heading" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <h3>Way Choose Us Heading</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Heading Title 
+                <input type="text" name="way_choose_us_heading_title" value="<%=way_choose_us_heading_info.way_choose_us_heading_title%>" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Heading Details
+                <textarea name="way_choose_us_heading_details" cols="75" rows="">
+                    <%=way_choose_us_heading_info.way_choose_us_heading_details%>
+                </textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Update Way Chooce us Heading</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%- include('footer.ejs')  %>

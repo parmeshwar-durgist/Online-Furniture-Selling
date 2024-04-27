@@ -1,0 +1,22 @@
+<%- include('navbar.ejs') %>
+
+<form action="/do_login" method="post">
+    <div class="container-fluid">
+        <div class="row justify-content-center mb-5 mt-5">
+            <div class="col-md-5 bg-white shadow p-5">
+                <h3 class="text-center">Login Now</h3><br>
+                Enter Mobile No 
+                <input type="text" name="mobile_number" class="form-control"><br>
+                Enter Password 
+                <input type="text" name="password" class="form-control"><br>
+                <div class="text-center">
+                    <button class="btn btn-primary mb-4">Login</button><br>
+                    <h6>New User <a href="/signup">Create Account</a></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<%- include('footer.ejs') %>

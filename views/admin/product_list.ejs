@@ -1,0 +1,53 @@
+<%- include('navbar.ejs')  %>
+
+<div class="container-fluid bg-white p-4">
+    <div class="row">
+        <div class="col-md-12 mb-5 bg-dark p-3 text-white">
+            <h3>All Product List
+                <form action="/admin/product_search" method="get" class="float-end">
+                    <input type="text" name="str" class="form-control w-75 d-inline-block">
+                    <button class="btn btn-success"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
+                </form>
+            </h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped table-sm">
+                <tr>
+                    <th></th>
+                    <th>SNO</th>
+                    <th>Product Type</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Size</th>
+                    <th>Product Color</th>
+                    <th>Product Image</th>
+                </tr>
+                <% for(i=0;i<product_list_data.length;i++) { %>
+                    <tr>
+                        <td>
+                            <a href="/admin/edit_products/<%=product_list_data[i].product_id%>"> 
+                                <button class="btn btn-primary p-0 pe-2 ps-2"> <i class="fas fa-pencil"></i> </button> 
+                            </a>
+                            <a href="/admin/delete_product/<%=product_list_data[i].product_id%>"> 
+                                <button class="btn btn-danger p-0 pe-2 ps-2"> <i class="fas fa-trash text-white"></i> </button> 
+                            </a>
+                        </td>
+                        <td><%=i+1%></td>
+                        <td><%=product_list_data[i].product_type_name%></td>
+                        <td><%=product_list_data[i].product_name%></td>
+                        <td> &#8377; <%=product_list_data[i].product_price%></td>
+                        <td><%=product_list_data[i].product_size%></td>
+                        <td>
+                            <div style="height: 30px;width: 100%;background-color: <%=product_list_data[i].product_color%>"></div>
+                        </td>
+                        <td>
+                            <img src="/uploads/<%=product_list_data[i].product_image.split(',')[0]%>" width="100px">
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs')  %>

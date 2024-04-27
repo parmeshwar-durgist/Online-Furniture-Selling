@@ -1,0 +1,65 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/save_testimonials" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <h3>Add Testimonials</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Testimonials Details
+                <textarea name="testimonials_details" cols="75" rows=""></textarea>
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Image
+                <input type="file" name="testimonials_img" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Name
+                <input type="text" name="testimonials_name" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Position
+                <input type="text" name="testimonials_position" class="form-control">
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Save Testimonials</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br><br>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>SNO</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Details</th>
+        <th>Image</th>
+    </tr>
+    <% for(var i=0;i<testimonials_list_data.length;i++) { %>
+        <tr>
+            <td>
+                <a href="/admin/edit_testimonials/<%=testimonials_list_data[i].testimonials_id%>"> 
+                    <button class="btn btn-primary p-0 pe-2 ps-2"> <i class="fas fa-pencil"></i> </button>
+                </a>
+                <a href="/admin/delete_testimonials/<%=testimonials_list_data[i].testimonials_id%>"> 
+                    <button class="btn btn-danger p-0 pe-2 ps-2"> <i class="fas fa-trash text-white"></i> </button> 
+                </a>
+            </td>
+            <td><%=i+1%></td>
+            <td><%=testimonials_list_data[i].testimonials_name%></td>
+            <td><%=testimonials_list_data[i].testimonials_position%></td>
+            <td><%=testimonials_list_data[i].testimonials_details%></td>
+            <td>
+                <img src="/uploads/<%=testimonials_list_data[i].testimonials_img.split(',')[0]%>" width="100px">
+            </td>
+        </tr>
+    <% } %>
+</table>
+
+<%-include('footer.ejs')%>

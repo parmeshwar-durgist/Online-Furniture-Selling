@@ -1,0 +1,87 @@
+<%- include('navbar.ejs')  %>
+
+<form action="/admin/update_product" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="product_id" value="<%=product_info.product_id%>">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <h3>Update Product</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mt-3">
+                Select Type 
+                <select name="product_type" required class="form-control">
+                    <option selected disabled value="">Select Type</option>
+                    <% for(i=0;i<types.length;i++) { %>
+                        <option value="<%=types[i].product_type_id%>"
+                            <%=(product_info.product_type_id == types[i].product_type_id ) ? 'selected':'' %>
+                            >
+                            <%=types[i].product_type_name%>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-md-3 mt-3">
+                Enter Product Name 
+                <input type="text" name="product_name" value="<%=product_info.product_name%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Enter Product Price 
+                <input type="number" name="product_price" value="<%=product_info.product_price%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Duplicate Price 
+                <input type="number" name="duplicate_price" value="<%=product_info.duplicate_price%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Product Image  
+                <label>
+                    <img src="/uploads/<%=product_info.product_image.split(',')[0]%>" width="10%">
+                </label>
+                <input type="file" multiple name="product_image" value="<%=product_info.product_image%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Product Size 
+                <input type="text" name="product_size" value="<%=product_info.product_size%>"  class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Product Color 
+                <input type="color" name="product_color" value="<%=product_info.product_color%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Product Label 
+                <input type="text" name="product_label" value="<%=product_info.product_label%>" class="form-control">
+            </div>
+            <div class="col-md-12 mt-3">
+                Product Details 
+                <textarea name="product_details" class="form-control"><%=product_info.product_details%></textarea>
+            </div>
+            <div class="col-md-12 mt-2 text-center">
+                <button class="btn btn-primary">Update Product</button>
+            </div>
+
+                Product Images 
+                <%
+                    var arr = product_info.product_image.split(",");
+                    for(var i=0; i<arr.length; i++)
+                    {
+                        if(arr[i]!='')
+                        {
+                            %>
+                                <div class="col-md-2 mt-3 text-center">
+                                    <img src="/uploads/<%=arr[i]%>" width="100px">
+                                    <a href="/admin/delete_product_image/<%=product_info.product_id%>/<%=arr[i]%>">
+                                        <button type="button" class="btn btn-danger p-0 ps-2 pe-2" >Delete</button>
+                                    </a>
+                                </div>
+                            <%
+                        }
+                    }
+                %>
+        </div>
+    </div>
+</form>
+
+
+
+<%- include('footer.ejs')  %>

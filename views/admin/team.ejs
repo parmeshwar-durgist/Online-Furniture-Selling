@@ -1,0 +1,65 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/save_team" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <h3>Add Our Team</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Name 
+                <input type="text" name="team_name" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3"> 
+                Enter Position
+                <input type="text" name="team_position" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Details
+                <input type="text" name="team_details" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Image
+                <input type="file" name="team_img" class="form-control">
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Save Team</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br>
+<br>
+
+<table class="table table-bordered">
+    <tr>
+        <th></th>
+        <th>SNO</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Details</th>
+        <th>Image</th>
+    </tr>
+    <% for(var i=0;i<team_list_data.length;i++) { %>
+        <tr>
+            <td>
+                <a href="/admin/edit_team/<%=team_list_data[i].team_id%>"> 
+                    <button class="btn btn-primary p-0 pe-2 ps-2"> <i class="fas fa-pencil"></i> </button>
+                </a>
+                <a href="/admin/delete_team/<%=team_list_data[i].team_id%>"> 
+                    <button class="btn btn-danger p-0 pe-2 ps-2"> <i class="fas fa-trash text-white"></i> </button> 
+                </a>
+            </td>
+            <td><%=i+1%></td>
+            <td><%=team_list_data[i].team_name%></td>
+            <td><%=team_list_data[i].team_position%></td>
+            <td><%=team_list_data[i].team_details%></td>
+            <td>
+                <img src="/uploads/<%=team_list_data[i].team_img%>" width="100px" alt="">
+            </td>
+        </tr>
+    <% } %>
+</table>
+<%-include('footer.ejs')%>

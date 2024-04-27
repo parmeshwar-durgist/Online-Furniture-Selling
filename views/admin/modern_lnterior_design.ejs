@@ -1,0 +1,49 @@
+<%- include('navbar.ejs')%>
+
+<form action="/admin/update_modern_lnterior_design" method="post" enctype="multipart/form-data">
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center mb-4 bg-dark p-2 text-white">
+            <h3>Modern Interior Design</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mt-3">
+                Enter Ima1
+                <input type="file" name="modern_img1" value="<%=modern_lnterior_design_data.modern_img1%>" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <img src="/uploads/<%=modern_lnterior_design_data.modern_img1%>" height="150px" />
+            </div>
+            <div class="col-md-2 mt-3">
+                Enter Ima2
+                <input type="file" name="modern_img2" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <img src="/uploads/<%=modern_lnterior_design_data.modern_img2%>" height="150px" />
+            </div>
+            <div class="col-md-2 mt-3">
+                Enter Ima3
+                <input type="file" name="modern_img3" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <img src="/uploads/<%=modern_lnterior_design_data.modern_img3%>" height="150px" />
+            </div>
+            <div class="col-md-4 mt-3">
+                Enter Heading
+                <input type=text" name="modern_heading" value="<%=modern_lnterior_design_data.modern_heading%>" class="form-control">
+            </div>
+
+            <div class="col-md-8 mt-3">
+                Enter Details
+                <textarea name="modern_details" cols="90" rows="2">
+                    <%=modern_lnterior_design_data.modern_details%>
+                </textarea>
+            </div>
+            
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Update modern lnterior design</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%- include('footer.ejs')%>

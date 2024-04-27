@@ -1,0 +1,37 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/update_team" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <input type="hidden" name="team_id" value="<%=teamdata.team_id%>">
+            <h3>Update Our Team</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Name 
+                <input type="text" name="team_name" value="<%=teamdata.team_name%>" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3"> 
+                Enter Position
+                <input type="text" name="team_position" value="<%=teamdata.team_position%>" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Details
+                <input type="text" name="team_details" value="<%=teamdata.team_details%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                Enter Image
+                <input type="file" name="team_img" value="<%=teamdata.team_img%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3">
+                <img src="/uploads/<%=teamdata.team_img%>" width="100px" alt="">
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Update Team</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%-include('footer.ejs')%>

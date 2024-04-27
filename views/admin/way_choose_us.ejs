@@ -1,0 +1,57 @@
+<%- include('navbar.ejs') %>
+
+
+<form action="/admin/save_way_choose_us" method="post" enctype="multipart/form-data">
+    
+
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <h3>Add New Way Choose Us</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Title 
+                <input type="text" name="way_choose_us_title" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Details
+                <!-- <input type="number" name="way_choose_us_details" class="form-control"> -->
+                <textarea name="way_choose_us_details" cols="75" rows=""></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Save Way Chooce Up</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<br><br>
+
+
+<table class="table table-bordered table-shriped">
+    <tr>
+
+        <th>SNO</th>
+        <th>Title</th>
+        <th>Details</th>
+    </tr>
+    <% for(var i=0;i<why_choose_us_data.length;i++) { %>
+    <tr>
+        <td>
+            <a style="text-decoration: none;" href="/admin/why_choose_us_edit/<%=why_choose_us_data[i].save_way_choose_us_id%>"> 
+                <button class="btn btn-primary p-1 ps-2 pe-2 text-white"> <i class="fas fa-pencil"></i> </button> 
+            </a>
+            <a style="text-decoration: none;" href="/admin/delete_why_choose_us/<%=why_choose_us_data[i].save_way_choose_us_id%>">
+                <button class="btn btn-danger p-1 ps-2 pe-2 text-white" id="popupButton1"><i class="fa fa-trash" aria-hidden="true" ></i></button>
+            </a>
+        </td>
+        <td><%=i+1%></td>
+        <td><%=why_choose_us_data[i].way_choose_us_title%></td>
+        <td><%=why_choose_us_data[i].way_choose_us_details%></td>
+    </tr>
+    <% } %>
+</table>
+
+
+<%- include('footer.ejs') %>

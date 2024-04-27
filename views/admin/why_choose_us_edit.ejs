@@ -1,0 +1,28 @@
+<%- include('navbar.ejs') %>
+
+<form action="/admin/update_save_way_choose" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <input type="hidden" name="save_way_choose_us_id" value="<%=why_choose_us_data.save_way_choose_us_id%>">
+            <h3>Update New Way Choose Us</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Title 
+                <input type="text" name="way_choose_us_title" value="<%=why_choose_us_data.way_choose_us_title%>" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Details
+                <textarea name="way_choose_us_details" cols="75" rows=""><%=why_choose_us_data.way_choose_us_details%></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Update Way Chooce Up</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+<%- include('footer.ejs') %>

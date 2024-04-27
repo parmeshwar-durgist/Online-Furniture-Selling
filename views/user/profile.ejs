@@ -1,0 +1,29 @@
+<%- include("navbar.ejs") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"> </div> 
+            <div class="col-md-6 mt-5 mb-5 " >
+                <div class="row bg-white p-5 " style="border-radius: 15px;">
+                    <div class="col-md-12 text-center pt-2 pb-1" style="background-color: #3b5d50;">
+                        <h4 class="text-white">Profile page</h4>
+                    </div>
+                    <div class="col-md-12 mt-4">
+                        <h5 class=" ml-4 mt-3 text-dark"><span style="color: #3b5d50;font-weight: bold;">User Name : </span><%=user_info.user_name%></h5>
+                        <h5 class=" ml-4 mt-3 text-dark"><span style="color: #3b5d50;font-weight: bold;">Mobile No :</span><%=user_info.mobile_number%></h5>
+                        <h5 class=" ml-4 mt-3 text-dark"><span style="color: #3b5d50;font-weight: bold;">Email Id : </span><%=user_info.user_email%></h5>
+                    </div>
+                    <div class="col-md-6 mt-4 text-end">
+                        <a href="/my_orders"><button class="btn btn-primary mt-3">My orders</button></a>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <a href="/logout" > <button class="btn btn-primary mt-3 ">logout</button></a>
+                    </div>
+                </div>
+            </div> 
+        <div class="col-md-3 "> </div> 
+    </div>
+</div>
+  
+<br><br><br><br><br><br>
+
+<%- include("footer.ejs") %>

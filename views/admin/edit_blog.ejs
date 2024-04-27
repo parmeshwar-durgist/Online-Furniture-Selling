@@ -1,0 +1,37 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/update_blog" method="post" enctype="multipart/form-data">
+    
+    <div class="container p-4 bg-white">
+        <div class="col-md-12 mb-2 text-center bg-dark p-2 text-white">
+            <input type="hidden" name="blog_id" value="<%=blogdata.blog_id%>">
+            <h3>Update Blogs</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                Enter Blog Details
+                <input type="text" name="blog_details" value="<%=blogdata.blog_details%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3"> 
+                Enter Blog Image
+                <input type="file" name="blog_img" value="<%=blogdata.blog_img%>" class="form-control">
+            </div>
+            <div class="col-md-3 mt-3"> 
+                <img src="/uploads/<%=blogdata.blog_img%>" width="100px">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Blog Name
+                <input type="text" name="blog_name" value="<%=blogdata.blog_name%>" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Blog Date
+                <input type="date" name="blog_date" value="<%=blogdata.blog_date%>" class="form-control">
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn btn-primary">Update Blog</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%-include('footer.ejs')%>

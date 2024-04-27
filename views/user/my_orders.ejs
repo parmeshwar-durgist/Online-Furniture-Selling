@@ -1,0 +1,34 @@
+<%- include("navbar.ejs") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <h3>My Orders</h3>
+        </div>
+        <% for(var i=0;i<orders.length;i++) { %>
+            <div class="col-md-4 mt-3 mb-5">
+                <a href="/print_order/<%=orders[i].order_id%>" style="text-decoration: none;">
+                    <div class="order_box shadow border p-3" style="color: black;">
+                        <div class="p-2" style="text-align: center;text-transform: capitalize;background-color: #3b5d50;color: white;">
+                            <%=orders[i].order_status%> Order
+                        </div>
+                        #FURNI <%=orders[i].order_id%>
+                        <span class="float-end">
+                            <%=orders[i].order_data%>
+                        </span><br>
+                        &#8377; <%=orders[i].total_amt%>
+                        <span class="float-end">
+                            <%=orders[i].payment_status%>
+                        </span><br>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%- include("footer.ejs") %>

@@ -1,0 +1,132 @@
+<%-include("navbar.ejs")%>
+
+<% if(order_info) { %>
+<br /><br /><br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-4 ">
+        <h3>Delivered Order Details</h3>
+    </div>
+</div>
+  <div class="card">
+    <div class="card-header">
+      Invoice
+      <strong><%=order_info.order_data%></strong>
+  
+      <span class="float-end">
+        <strong>Status:</strong><%=order_info.order_status%></span>
+    </div>
+    <div class="card-body">
+      <div class="row mb-4">
+        <div class="col-sm-6">
+          <h6 class="mb-3">From:</h6>
+          <div>
+            <strong>A2Z IT HUB</strong>
+          </div>
+          <div>Ahmednagar</div>
+          <div>Maharashtra, India - 414001</div>
+          <div>Email: info@a2zithub.com</div>
+          <div>Phone: +91 9657847967</div>
+        </div>
+
+        <div class="col-sm-6">
+          <h6 class="mb-3">To:</h6>
+          <div>
+            <strong
+              ><%=order_info['c_fname']%> <%=order_info['c_lname']%></strong
+            >
+          </div>
+          <div><%=order_info['c_address']%></div>
+          <div>
+            <%=order_info['c_area']%>, <%=order_info['c_state']%>
+            ,<%=order_info['c_postal_zip']%>
+          </div>
+          <div><%=order_info['c_email_address']%></div>
+          <div><%=order_info['c_phone']%></div>
+        </div>
+      </div>
+
+      <div class="table-responsive-sm">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="center">SN</th>
+              <th>Item</th>
+
+              <th class="right">Unit Cost</th>
+              <th class="center">Qty</th>
+              <th class="right" id="all_product_total">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+            var sub_total=0;
+            products.map(function(val,i)
+            {
+              sub_total = sub_total + (val.product_price * val.product_qty );
+
+              %>
+            <tr>
+              <td class="center"><%=i+1%></td>
+              <td class="left strong"><%=val.product_name%></td>
+
+              <td class="right">&#8377; <%=val.product_price%></td>
+              <td class="center"><%=val.product_qty%></td>
+              <td class="right">&#8377; <%=val.product_qty * val.product_price %></td>
+            </tr>
+            <%
+        });
+        %>
+        </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-5">
+            <!-- <a href="/admin/delevered_order/<%=order_info['order_id']%>">
+                <button>
+                    Tranfer into Delivered
+                </button>
+            </a> -->
+        </div>
+
+        <div class="col-lg-4 col-sm-5 ml-auto">
+          <table class="table table-clear">
+            <tbody>
+              <tr>
+                <td class="left">
+                  <strong>Subtotal</strong>
+                </td>
+                <td class="end" id="sub_total"><%=sub_total%></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<script>
+
+  function grand_total(){
+     var all_totals = document.getElementsByClassName("all_product_total");
+     var sum = 0;
+     for(i=0;i<all_totals.length;i++)
+     {
+       sum= sum + Number(all_totals[i].innerHTML);
+     }
+     $("#sub_total").html(sum);
+   }
+ </script>
+
+ <% } %>
+ 
+
+<%-include("footer.ejs")%>

@@ -1,0 +1,52 @@
+<%- include('navbar.ejs')  %>
+
+<form action="/admin/save_product_type" method="post" enctype="multipart/form-data">
+
+    <div class="container p-5 bg-white">
+        <div class="col-md-12 mb-2 text-center">
+            <h3>Add Product Type</h3>
+        </div>
+        <div class="row">
+        <div class="col-md-2 mt-3"></div>
+        <div class="col-md-6 mt-3">
+            Enter Type 
+            <input type="text" name="product_type_name" class="form-control mt-2">
+        </div>
+        <div class="col-md-2 mt-5 text-center">
+            <button class="btn btn-primary">Save Product Type</button>
+        </div>
+        </div>
+    </div>
+</form>
+<br><br>
+
+<div class="container-fluid bg-white p-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mb-2">
+            <h3>All Products Type</h3>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <tr>
+                    <th></th>
+                    <th>SNO</th>
+                    <th>Type</th>
+                </tr>
+                <% for(i=0;i<types.length;i++) { %>
+                    <tr>
+                        <td>
+                            <a href="/admin/delete_product_type/<%=types[i].product_type_id%>"> 
+                                <button class="btn btn-danger p-0 pe-2 ps-2"> <i class="fas fa-trash text-white"></i> </button> 
+                            </a>
+                        </td>
+                        <td><%=i+1%></td>
+                        <td><%=types[i].product_type_name%></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs')  %>
+
